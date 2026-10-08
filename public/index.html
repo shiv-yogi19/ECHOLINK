@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05060d">
+<title>EchoLink — Your Voice. Live. Anywhere.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash" aria-hidden="true">
+  <div class="sp-title">ECHOLINK</div>
+  <div class="sp-tag">Your Voice.<br>Live. Anywhere.</div>
+  <div class="sp-wave"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i></div>
+  <div class="sp-by">Created By Shiv Yogi</div>
+</div>
+
+<div class="bg" aria-hidden="true"><i class="aurora"></i><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="grid"></i><canvas id="bg"></canvas></div>
+
+<header><b class="logo">ECHOLINK</b>
+  <div id="pill" class="pill s-waiting" role="status" aria-live="polite" hidden><i></i><span>WAITING</span></div>
+</header>
+
+<main>
+  <section id="home" class="screen on">
+    <h1 class="brand">ECHOLINK</h1>
+    <h2 class="tag">Your Voice.<br><span>Live. Anywhere.</span></h2>
+    <p class="sub">Turn your phone into a wireless<br>live microphone.</p>
+    <div class="row">
+      <button id="startMic" class="btn pri">🎤 START MIC</button>
+      <button id="joinBtn" class="btn">🔗 JOIN ROOM</button>
+    </div>
+  </section>
+
+  <section id="join" class="screen">
+    <div class="card glass">
+      <h3>Join Room</h3>
+      <p class="sub">Enter the 6-digit code</p>
+      <input id="codeIn" inputmode="numeric" autocomplete="off" maxlength="7" placeholder="000 000" aria-label="6-digit room code">
+      <button id="connect" class="btn pri">CONNECT</button>
+      <button class="btn ghost" data-go="home">Back</button>
+    </div>
+  </section>
+
+  <section id="sender" class="screen">
+    <h3 id="sTitle" class="stitle"></h3>
+    <div id="codeCard" class="card glass codecard">
+      <p class="lbl">ROOM CODE</p>
+      <div id="code" class="code" aria-live="polite"></div>
+      <p class="wait">Waiting for another device<span class="dots"><i></i><i></i><i></i></span></p>
+      <div class="row">
+        <button id="copy" class="btn sm">📋 Copy Code</button>
+        <button id="share" class="btn sm">🔗 Share</button>
+        <button class="btn sm danger" data-end>❌ Leave Room</button>
+      </div>
+    </div>
+    <div class="link" data-state="waiting"><div class="node"><small>PHONE 1</small></div><div class="line"></div><div class="node"><small>PHONE 2</small></div></div>
+    <div class="stage"><canvas id="vizS" class="viz"></canvas><div class="core">🎤</div></div>
+    <div class="row">
+      <button id="muteMic" class="btn sm"><b>🎤</b> <span>Mute Mic</span></button>
+      <button class="btn sm danger" data-end>🔴 End Session</button>
+    </div>
+  </section>
+
+  <section id="recv" class="screen">
+    <h3 id="rTitle" class="stitle"></h3>
+    <div class="link" data-state="connecting"><div class="node"><small>PHONE 1</small></div><div class="line"></div><div class="node"><small>PHONE 2</small></div></div>
+    <div class="stage"><canvas id="vizR" class="viz"></canvas><div class="core">🔊</div></div>
+    <button id="tap" class="btn pri" hidden>▶ TAP TO START AUDIO</button>
+    <div class="card glass ctl">
+      <button id="muteSp" class="btn sm" aria-label="Mute">🔊</button>
+      <input id="vol" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume">
+      <button id="fs" class="btn sm" aria-label="Fullscreen">⛶</button>
+    </div>
+    <button class="btn sm danger" data-end>Leave Room</button>
+    <audio id="audio" autoplay playsinline></audio>
+  </section>
+</main>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true">
+  <div class="card glass">
+    <div class="mi"><span id="mIcon"></span><i id="mReady" class="dot" hidden></i></div>
+    <h3 id="mTitle"></h3>
+    <p id="mText" class="sub"></p>
+    <button id="mBtn" class="btn pri"></button>
+    <button id="mBtn2" class="btn ghost"></button>
+  </div>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<footer class="foot"><b>ECHOLINK</b> · Created By Shiv Yogi</footer>
+<script src="app.js"></script>
+</body>
+</html>
